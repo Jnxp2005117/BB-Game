@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Date and time display */
+.datetime {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+}
+
+.duck {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    transition: all 0.1s ease-out;
+    z-index: 10;
+}
+
+.duck-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-100px);
+    }
+}
+
+/* Duck direction classes */
+.duck.facing-right .duck-image {
+    transform: scaleX(1);
+}
+
+.duck.facing-left .duck-image {
+    transform: scaleX(-1);
+}
+
+/* Dead duck styles */
+.duck.dead {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.duck.dead .duck-image {
+    animation: none !important;
+    filter: grayscale(50%) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Make duck clickable */
+.duck {
+    cursor: pointer;
+}
+
+/* Timer styles */
+.timer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.timer.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.timer-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ff6b6b;
+}
+
+.countdown {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #4ecdc4;
+    animation: pulse 1s infinite;
+}
+
+.reset-text {
+    font-size: 16px;
+    color: #ccc;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Death particle effects */
+.death-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+    animation: sparkle 2s ease-out forwards;
+    box-shadow: 0 0 6px currentColor;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 1;
+        transform: scale(0) translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1) translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-50px);
+    }
+}
