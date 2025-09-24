@@ -86,7 +86,7 @@ class DuckGame {
         
         // Change image to dead duck
         const duckImage = this.duck.querySelector('.duck-image');
-        duckImage.src = 'Photos/D2F4-BROWN.png';
+        duckImage.src = 'D2F4-BROWN.png';
         
         // Add death animation class
         this.duck.classList.add('dead');
@@ -200,7 +200,7 @@ class DuckGame {
         
         // Reset duck image
         const duckImage = this.duck.querySelector('.duck-image');
-        duckImage.src = 'Photos/D1F4-BROWN.png';
+        duckImage.src = 'D1F4-BROWN.png';
         duckImage.style.animation = 'float 2s ease-in-out infinite';
         
         // Reset position to center and random direction
